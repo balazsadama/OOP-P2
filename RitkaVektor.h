@@ -27,7 +27,7 @@ public:
 	~RitkaVektor();
 
 	RitkaVektor operator+(const RitkaVektor&);
-	RitkaVektor operator-(const RitkaVektor&);
+	RitkaVektor operator-(const RitkaVektor&) const;
 	double operator*(const RitkaVektor&);
 	double operator~();
 	double operator%(const RitkaVektor&);
@@ -117,7 +117,7 @@ RitkaVektor<T> RitkaVektor<T>::operator+(const RitkaVektor& x){
 }
 
 template<class T>
-RitkaVektor<T> RitkaVektor<T>::operator-(const RitkaVektor& x){
+RitkaVektor<T> RitkaVektor<T>::operator-(const RitkaVektor& x) const {
 	if (dim != x.dim)
 		throw "Osszeadas sikertelen, kulonbozo dimenzioju vektorok.";
 
