@@ -18,7 +18,7 @@ public:
 	void kiir();
 	
 	Vektor operator+(const Vektor&);
-	Vektor operator-(const Vektor&);
+	Vektor operator-(const Vektor&) const;
 	double operator*(const Vektor&);
 	double operator~();
 	double operator%(const Vektor&);
@@ -81,7 +81,7 @@ Vektor<T> Vektor<T>::operator+(const Vektor& v) {
 }
 
 template<class T>
-Vektor<T> Vektor<T>::operator-(const Vektor& v) {
+Vektor<T> Vektor<T>::operator-(const Vektor& v) const {
 	if (m_dim != v.m_dim)
 		throw "Kivonas sikertelen, kulonbozo dimenzioju vektorok.";
 
@@ -115,8 +115,9 @@ double Vektor<T>::operator~() {
 //works, tested
 template<class T>
 double Vektor<T>::operator%(const Vektor& v) {
+	return ~(v - *this);
 	//return ~(const_cast<Vektor<T> > (v - *this));
-	return ~(const_cast<Vektor<T> > (v.operator-(const_cast<Vektor<T> (*this))));
+	//return ~(const_cast<Vektor<T> > (v.operator-(const_cast<Vektor<T> (*this))));
 }
 
 template<class T>
